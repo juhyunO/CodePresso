@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/admin/Desktop/공부/Spring/projects/codepresso/src/**)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(rm:*)",
+      "Bash(./gradlew:*)",
+      "Bash(lsof:*)",
+      "Bash(kill:*)",
+      "Read(//Users/admin/Desktop/공부/Spring/projects/codepresso/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
