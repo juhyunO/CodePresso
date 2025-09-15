@@ -1,5 +1,6 @@
-package com.codepresso.codepresso.entity;
+package com.codepresso.codepresso.entity.cart;
 
+import com.codepresso.codepresso.entity.product.ProductOption;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -7,7 +8,6 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @Table(name="cart_option")
 @Entity
 public class CartOption {

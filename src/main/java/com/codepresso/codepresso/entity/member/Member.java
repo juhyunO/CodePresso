@@ -1,6 +1,5 @@
-package com.codepresso.codepresso.entity;
+package com.codepresso.codepresso.entity.member;
 
-import com.codepresso.codepresso.utils.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,7 +17,7 @@ import java.time.LocalDateTime;
                 @UniqueConstraint(name = "uq_member_nickname", columnNames = "nickname")
         })
 @Entity
-public class Member extends BaseTimeEntity {
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

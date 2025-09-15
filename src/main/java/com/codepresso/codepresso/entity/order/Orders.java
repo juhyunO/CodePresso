@@ -1,7 +1,7 @@
 package com.codepresso.codepresso.entity.order;
 
-import com.codepresso.codepresso.entity.Branch;
-import com.codepresso.codepresso.entity.Member;
+import com.codepresso.codepresso.entity.branch.Branch;
+import com.codepresso.codepresso.entity.member.Member;
 import com.codepresso.codepresso.entity.payment.Payment;
 import jakarta.persistence.*;
 import lombok.*;
@@ -47,10 +47,10 @@ public class Orders {
     private Boolean isPickup;
 
     // 주문 마스터 <-> 주문상세 (1:N)
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrdersDetail> ordersDetails;
 
     // 주문 <-> 결제 마스터 (1:1)
-    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true)
     private Payment payment;
 }

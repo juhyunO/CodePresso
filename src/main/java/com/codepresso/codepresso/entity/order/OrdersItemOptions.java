@@ -1,6 +1,6 @@
 package com.codepresso.codepresso.entity.order;
 
-import com.codepresso.codepresso.entity.ProductOption;
+import com.codepresso.codepresso.entity.product.ProductOption;
 import jakarta.persistence.*;
 import lombok.*;
 

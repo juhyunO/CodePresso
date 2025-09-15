@@ -1,4 +1,4 @@
-package com.codepresso.codepresso.entity;
+package com.codepresso.codepresso.entity.product;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

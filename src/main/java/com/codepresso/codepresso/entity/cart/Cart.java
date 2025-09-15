@@ -1,5 +1,6 @@
-package com.codepresso.codepresso.entity;
+package com.codepresso.codepresso.entity.cart;
 
+import com.codepresso.codepresso.entity.member.Member;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,7 +11,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @Builder
 @Table(name="cart")
 @Entity

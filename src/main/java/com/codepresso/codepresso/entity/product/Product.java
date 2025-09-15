@@ -1,4 +1,5 @@
-package com.codepresso.codepresso.entity;
+package com.codepresso.codepresso.entity.product;
+import com.codepresso.codepresso.entity.member.Favorite;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -46,5 +47,9 @@ public class Product {
     // 1:N - Category
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Category> categories = new ArrayList<>();
+
+    // 1:N 관계 매핑 (즐겨찾기만)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Favorite> favorites = new ArrayList<>();
 
 }

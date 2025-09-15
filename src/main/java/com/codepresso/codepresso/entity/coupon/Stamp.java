@@ -1,5 +1,6 @@
 package com.codepresso.codepresso.entity.coupon;
 
+import com.codepresso.codepresso.entity.member.Member;
 import com.codepresso.codepresso.entity.order.OrdersDetail;
 import jakarta.persistence.*;
 import lombok.*;

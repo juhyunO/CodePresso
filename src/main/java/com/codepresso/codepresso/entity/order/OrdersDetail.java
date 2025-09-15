@@ -1,6 +1,6 @@
 package com.codepresso.codepresso.entity.order;
 
-import com.codepresso.codepresso.entity.Product;
+import com.codepresso.codepresso.entity.product.Product;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,6 +28,6 @@ public class OrdersDetail {
     @Column(name = "price")
     private Integer price;
 
-    @OneToMany(mappedBy = "orderDetail", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "ordersDetail", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrdersItemOptions> options;
 }

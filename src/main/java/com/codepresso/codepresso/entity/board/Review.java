@@ -1,5 +1,7 @@
-package com.codepresso.codepresso.entity;
+package com.codepresso.codepresso.entity.board;
 
+import com.codepresso.codepresso.entity.member.Member;
+import com.codepresso.codepresso.entity.order.OrdersDetail;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,12 +26,12 @@ public class Review {
     @Column(name = "photo_url")
     private String photoUrl;
 
-//    @ManyToOne
-//    @JoinColumn(name = "order_detail_id", nullable = false)
-//    private OrdersDetail ordersDetail;
+    @ManyToOne
+    @JoinColumn(name = "order_detail_id", nullable = false)
+    private OrdersDetail ordersDetail;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "member_id", nullable = false)
-//    private Member member;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
 
 }

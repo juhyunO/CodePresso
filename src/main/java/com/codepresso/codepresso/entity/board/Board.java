@@ -1,5 +1,6 @@
 package com.codepresso.codepresso.entity.board;
 
+import com.codepresso.codepresso.entity.member.Member;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
