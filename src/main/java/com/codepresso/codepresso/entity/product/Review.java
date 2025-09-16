@@ -1,4 +1,4 @@
-package com.codepresso.codepresso.entity.board;
+package com.codepresso.codepresso.entity.product;
 
 import com.codepresso.codepresso.entity.member.Member;
 import com.codepresso.codepresso.entity.order.OrdersDetail;
@@ -26,7 +26,7 @@ public class Review {
     @Column(name = "photo_url")
     private String photoUrl;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_detail_id", nullable = false)
     private OrdersDetail ordersDetail;
 
