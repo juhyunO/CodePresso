@@ -24,6 +24,12 @@ public class Category {
     @JoinColumn(name = "parent_category_id")
     private Category parentCategory;
 
+    @Column(name = "category_name")
+    private String categoryName;
+
+    @Column(name = "category_code")
+    private String categoryCode;
+
     @OneToMany(mappedBy = "parentCategory", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Category> childCategories = new ArrayList<>();
 
@@ -32,5 +38,8 @@ public class Category {
     private List<Product> products = new ArrayList<>();
 
     private Byte level;
+
+    @Column(name = "display_order")
+    private Byte displayOrder;
 
 }

@@ -46,7 +46,7 @@ public class Product {
 
     // 1:N - Category
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
     // 1:N 관계 매핑 (즐겨찾기만)
