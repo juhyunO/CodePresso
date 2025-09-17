@@ -18,13 +18,13 @@ import java.util.List;
 public class Allergen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "allegen_id")
+    @Column(name = "allergen_id")
     private Long id;
 
-    @Column(name = "allegen_name", nullable = false)
+    @Column(name = "allergen_name", nullable = false)
     private String allegenName;
 
-    @Column(name = "allegen_code")
+    @Column(name = "allergen_code")
     private String allegenCode;
 
     // 1:N - AllergenProduct

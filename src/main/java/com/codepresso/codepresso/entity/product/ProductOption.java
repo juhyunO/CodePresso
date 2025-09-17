@@ -8,7 +8,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "product option")
+@Table(name = "product_option")
 @Entity
 public class ProductOption {
 

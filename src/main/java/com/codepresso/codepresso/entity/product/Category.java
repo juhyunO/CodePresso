@@ -28,9 +28,8 @@ public class Category {
     private List<Category> childCategories = new ArrayList<>();
 
     // Product 관계
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Product> products = new ArrayList<>();
 
     private Byte level;
 

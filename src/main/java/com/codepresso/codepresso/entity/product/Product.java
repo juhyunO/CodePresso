@@ -30,7 +30,7 @@ public class Product {
     @Column(name = "product_photo")
     private String productPhoto;
 
-    private String price;
+    private Integer price;
 
     // 1:N - ProductOption
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -45,8 +45,9 @@ public class Product {
     private List<AllergenProduct> allergenProducts = new ArrayList<>();
 
     // 1:N - Category
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Category> categories = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     // 1:N 관계 매핑 (즐겨찾기만)
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

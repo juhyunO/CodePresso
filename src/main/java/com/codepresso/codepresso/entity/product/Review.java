@@ -1,9 +1,11 @@
-package com.codepresso.codepresso.entity.board;
+package com.codepresso.codepresso.entity.product;
 
 import com.codepresso.codepresso.entity.member.Member;
 import com.codepresso.codepresso.entity.order.OrdersDetail;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -19,14 +21,15 @@ public class Review {
     @Column(name = "review_id")
     private Long id;
 
-    private double rating;
+    private BigDecimal rating;
 
+    @Column(name = "content", nullable = false, length = 500)
     private String content;
 
-    @Column(name = "photo_url")
+    @Column(name = "photo_url", nullable = false, length = 500)
     private String photoUrl;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_detail_id", nullable = false)
     private OrdersDetail ordersDetail;
 
