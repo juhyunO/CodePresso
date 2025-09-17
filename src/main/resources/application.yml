@@ -19,25 +19,12 @@ spring:
       prefix: /WEB-INF/views/  # JSP 파일이 위치한 디렉토리 경로
       suffix: .jsp             # JSP 파일 확장자
 
-#  # 데이터베이스 연결 설정 (H2 인메모리 DB - 개발용)
-#  datasource:
-#    url: jdbc:h2:mem:testdb           # H2 인메모리 데이터베이스 URL
-#    driver-class-name: org.h2.Driver  # H2 드라이버 클래스명
-#    username: sa                      # 데이터베이스 사용자명
-#    password:                         # 데이터베이스 비밀번호 (빈값)
-#
-#
-#  # H2 콘솔 설정
-#  h2:
-#    console:
-#      enabled: true  # H2 웹 콘솔 활성화 (브라우저에서 DB 확인 가능)
-#      # 접속 URL: http://localhost:8080/h2-console
-
-#  datasource:
-#    url: jdbc:mysql://localhost:33306/codepresso?useSSL=false&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
-#    username: codepresso
-#    password: codepresso123
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+  # 데이터베이스 연결 설정 (MySQL - docker-compose: mysql:8.4, 포트 33306)
+  datasource:
+    url: jdbc:mysql://localhost:33306/codepresso?useSSL=false&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true&characterEncoding=UTF-8
+    username: codepresso
+    password: codepresso123
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   # JPA/Hibernate 설정
   jpa:
@@ -49,9 +36,17 @@ spring:
   # MyBatis 설정
   mybatis:
     # Mapper XML 파일 위치 설정
-     mapper-locations: classpath:com.codepresso.codepresso/*.xml     # 특정 패키지의 XML 파일 (현재 경로가 잘못됨)
-     # 테스트 할 땐 이걸로!
-     type-aliases-package: com.codepresso.codepresso.test        # 타입 별칭을 위한 패키지 (MyBatis에서 클래스명만으로 타입 사용 가능)
+    mapper-locations: classpath:com.codepresso.codepresso/*.xml     # 특정 패키지의 XML 파일 (현재 경로가 잘못됨)
+    # 테스트 할 땐 이걸로!
+    type-aliases-package: com.codepresso.codepresso.test        # 타입 별칭을 위한 패키지 (MyBatis에서 클래스명만으로 타입 사용 가능)
 
 # 테스트 안 할 땐 이걸로!!!!!!!!!
 #  type-aliases-package: com.codepresso.codepresso        # 타입 별칭을 위한 패키지 (MyBatis에서 클래스명만으로 타입 사용 가능)
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  port: 8080
