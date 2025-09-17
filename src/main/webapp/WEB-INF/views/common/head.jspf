@@ -1,0 +1,113 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodePress</title>
+    <style>
+        :root {
+            --pink-1: #ff7aa2;
+            --pink-2: #ff9bb7;
+            --pink-3: #ffc2d2;
+            --pink-4: #ffe5ec;
+            --text-1: #1f2937;
+            --text-2: #4b5563;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --radius: 14px;
+        }
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--text-1);
+            background: linear-gradient(160deg, var(--pink-4), #fff 60%);
+            /* 푸터를 하단 고정: 플렉스 레이아웃 */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        .header {
+            position: sticky; top: 0; z-index: 10;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .header-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px;
+        }
+        .brand {
+            display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-1);
+            font-weight: 800; letter-spacing: 0.4px;
+        }
+        .logo {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+            box-shadow: var(--shadow);
+        }
+        .brand-mascot {
+            width: 32px; height: 32px; border-radius: 50%; overflow: hidden;
+            background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+            display: grid; place-items: center;
+            box-shadow: 0 6px 12px rgba(255,122,162,.28);
+        }
+        .brand-mascot img { width: 115%; height: auto; display: block; filter: drop-shadow(0 2px 3px rgba(0,0,0,.12)); transform: translateY(2px); }
+        .nav { display: flex; gap: 16px; }
+        .nav a { text-decoration: none; color: var(--text-2); font-weight: 600; }
+        .nav a:hover { color: var(--text-1); }
+
+        /* Hero */
+        .hero { padding: 96px 0 80px; flex: 1 0 auto; }
+        .hero-card {
+            display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 20px;
+            align-items: center;
+            background: linear-gradient(120deg, var(--pink-3), var(--pink-4));
+            border-radius: 24px; padding: 36px; box-shadow: var(--shadow);
+        }
+        .hero h1 { margin: 0 0 12px; font-size: 40px; line-height: 1.2; }
+        .hero p { margin: 0 0 24px; color: var(--text-2); font-size: 18px; }
+        .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn {
+            appearance: none; border: 0; cursor: pointer; border-radius: 999px;
+            padding: 12px 20px; font-size: 16px; font-weight: 700;
+            transition: transform .08s ease, box-shadow .2s ease, background .2s;
+        }
+        .btn:active { transform: translateY(1px); }
+        .btn-primary {
+            color: var(--white);
+            background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+            box-shadow: 0 8px 16px rgba(255, 122, 162, 0.35);
+        }
+        .btn-primary:hover { filter: brightness(1.02); }
+        .btn-ghost { background: var(--white); color: var(--text-1); border: 1px solid rgba(0,0,0,0.06); }
+        .badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--pink-1); background: var(--pink-4);
+            border-radius: 999px; padding: 8px 12px; font-weight: 700; font-size: 13px;
+            width: fit-content; margin-bottom: 12px;
+        }
+        .mockup { aspect-ratio: 1.2/1; border-radius: 16px; background: var(--white); box-shadow: var(--shadow); position: relative; overflow: hidden; }
+        .sprinkle { position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent 0 24px, rgba(255,122,162,.06) 24px 48px); mix-blend-mode: multiply; }
+
+        /* Mascot container */
+        .cup { position: absolute; right: -10px; bottom: -10px; width: 320px; background: transparent; box-shadow: none; border-radius: 0; overflow: visible; display: block; }
+        .cup-img { width: 100%; height: auto; object-fit: contain; display: block; filter: drop-shadow(0 10px 18px rgba(0,0,0,.12)); }
+        .cup-label { position: absolute; left: 10px; bottom: 10px; background: linear-gradient(135deg, var(--pink-1), var(--pink-2)); color: var(--white); padding: 6px 12px; border-radius: 999px; font-weight: 800; font-size: 13px; letter-spacing: .3px; box-shadow: 0 6px 14px rgba(255,122,162,.35); }
+
+        /* Footer */
+        .footer { padding: 24px 0 56px; color: var(--text-2); font-size: 13px; text-align: center; margin-top: auto; }
+
+        @media (max-width: 900px) {
+            .hero-card { grid-template-columns: 1fr; padding: 28px; }
+            .hero h1 { font-size: 32px; }
+            .hero { padding: 80px 0 64px; }
+            .cup { width: 260px; right: -6px; bottom: -6px; }
+        }
+    </style>
+</head>
