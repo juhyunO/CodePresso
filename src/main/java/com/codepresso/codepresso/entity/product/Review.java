@@ -5,6 +5,8 @@ import com.codepresso.codepresso.entity.order.OrdersDetail;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @Builder
@@ -19,11 +21,12 @@ public class Review {
     @Column(name = "review_id")
     private Long id;
 
-    private double rating;
+    private BigDecimal rating;
 
+    @Column(name = "content", nullable = false, length = 500)
     private String content;
 
-    @Column(name = "photo_url")
+    @Column(name = "photo_url", nullable = false, length = 500)
     private String photoUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
