@@ -14,7 +14,7 @@ public class PaymentDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "payment_slave_id")
+    @Column(name = "payment_detail_id")
     private Long id;
 
     // FK → PaymentMaster
